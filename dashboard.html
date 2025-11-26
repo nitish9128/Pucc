@@ -160,9 +160,9 @@
   </div>
 
   <script>
-    if (sessionStorage.getItem("loggedIn") !== "true") { window.location.href = "index.html"; }
+    if (sessionStorage.getItem("loggedIn") !== "true") { window.location.href = "login.html"; }
 
-    function logout() { sessionStorage.removeItem("loggedIn"); window.location.href = "index.html"; }
+    function logout() { sessionStorage.removeItem("loggedIn"); window.location.href = "login.html"; }
 
     function updateTotal() {
       let reminders = JSON.parse(localStorage.getItem("reminders") || "[]");
@@ -178,3 +178,4 @@
 
 
 </html>
+
