@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGB Login Register</title>
+
+<style>
+.design-by {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  font-size: 14px;
+  color: #ffffffcc;
+  letter-spacing: 1px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 0 12px rgba(0,255,200,0.4),
+              inset 0 0 5px rgba(255,255,255,0.08);
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 4px #00ffd5; opacity: 0.7; }
+  100% { text-shadow: 0 0 15px #00ffd5; opacity: 1; }
+}
+  
+/* 🔥 Full RGB Moving Background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #ff0000, #00fff7, #0040ff, #ff00e6);
+    background-size: 400% 400%;
+    animation: bodyRGB 7s linear infinite;
+    overflow: hidden;
+}
+
+/* Background Animation */
+@keyframes bodyRGB {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* 🔥 Premium Neon RGB Border Box */
+.rgb-box {
+    width: 330px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Outer border glow */
+.rgb-box::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 18px;
+    padding: 2px;
+    background: linear-gradient(130deg, red, yellow, lime, cyan, blue, violet, red);
+    background-size: 300%;
+    animation: borderRGB 4s linear infinite;
+    z-index: -1;
+}
+
+/* Border Movement */
+@keyframes borderRGB {
+    0% { background-position: 0%; }
+    50% { background-position: 150%; }
+    100% { background-position: 0%; }
+}
+
+/* Heading RGB Animation */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    animation: textRGB 2s linear infinite;
+}
+
+@keyframes textRGB {
+    0% { color: #ff4a4a; }
+    33% { color: #00ff9d; }
+    66% { color: #00e7ff; }
+    100% { color: #ff4a4a; }
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: white;
+    outline: none;
+}
+
+/* 🔥 Premium RGB Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(90deg, red, #ff00f0, cyan);
+    background-size: 300%;
+    animation: btnRGB 3s linear infinite;
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+@keyframes btnRGB {
+    0% { background-position: 0%; }
+    50% { background-position: 120%; }
+    100% { background-position: 0%; }
+}
+
+.switch {
+    margin-top: 10px;
+    color: #ddd;
+    text-align: center;
+}
+
+.switch span {
+    color: yellow;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="rgb-box" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="switch">Create new account? <span onclick="showRegister()">Register</span></div>
+</div>
+
+<div class="rgb-box" id="registerBox" style="display:none;">
+    <h2>Register</h2>
+    <input type="text" id="regUser" placeholder="Username">
+    <input type="password" id="regPass" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <div class="switch">Already have account? <span onclick="showLogin()">Login</span></div>
+</div>
+
+<script>
+
+function showRegister() {
+    loginBox.style.display = "none";
+    registerBox.style.display = "block";
+}
+
+function showLogin() {
+    registerBox.style.display = "none";
+    loginBox.style.display = "block";
+}
+
+function register() {
+    let user = regUser.value;
+    let pass = regPass.value;
+
+    if(user=="" || pass=="") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+
+    alert("Registration successful!");
+    showLogin();
+}
+
+function login() {
+    let user = loginUser.value;
+    let pass = loginPass.value;
+
+    if(user === localStorage.getItem("user") &&
+       pass === localStorage.getItem("pass")) {
+
+        sessionStorage.setItem("loggedIn", "true");
+        alert("Login Successful!");
+
+        window.location.href = "dashboard.html";
+
+    } else {
+        alert("Invalid Username or Password");
+    }
+}
+
+</script>
+<div class="design-by">Design by Nitish</div>
+</body>
+</html>
