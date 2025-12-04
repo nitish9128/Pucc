@@ -1,187 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/Register/Forgot</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGB Login Register</title>
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
+<style>
+.design-by {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  font-size: 14px;
+  color: #ffffffcc;
+  letter-spacing: 1px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 0 12px rgba(0,255,200,0.4),
+              inset 0 0 5px rgba(255,255,255,0.08);
+  animation: glow 3s infinite alternate;
+}
 
-            50% {
-                background-position: 100% 50%;
-            }
+@keyframes glow {
+  0% { text-shadow: 0 0 4px #00ffd5; opacity: 0.7; }
+  100% { text-shadow: 0 0 15px #00ffd5; opacity: 1; }
+}
+  
+/* 🔥 Full RGB Moving Background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #ff0000, #00fff7, #0040ff, #ff00e6);
+    background-size: 400% 400%;
+    animation: bodyRGB 7s linear infinite;
+    overflow: hidden;
+}
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+/* Background Animation */
+@keyframes bodyRGB {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
 
-        .container {
-            background: rgba(0, 0, 0, 0.85);
-            padding: 40px;
-            border-radius: 20px;
-            color: #fff;
-            width: 350px;
-            text-align: center;
-            box-shadow: 0 0 20px #000;
-        }
+/* 🔥 Premium Neon RGB Border Box */
+.rgb-box {
+    width: 330px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: none;
-            outline: none;
-        }
+/* Outer border glow */
+.rgb-box::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 18px;
+    padding: 2px;
+    background: linear-gradient(130deg, red, yellow, lime, cyan, blue, violet, red);
+    background-size: 300%;
+    animation: borderRGB 4s linear infinite;
+    z-index: -1;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 10px;
-            background: #ff4b2b;
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+/* Border Movement */
+@keyframes borderRGB {
+    0% { background-position: 0%; }
+    50% { background-position: 150%; }
+    100% { background-position: 0%; }
+}
 
-        button:hover {
-            background: #ff416c;
-        }
+/* Heading RGB Animation */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    animation: textRGB 2s linear infinite;
+}
 
-        .switch,
-        .forgot {
-            margin-top: 10px;
-            cursor: pointer;
-            color: #00ffff;
-            font-size: 14px;
-        }
-    </style>
+@keyframes textRGB {
+    0% { color: #ff4a4a; }
+    33% { color: #00ff9d; }
+    66% { color: #00e7ff; }
+    100% { color: #ff4a4a; }
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: white;
+    outline: none;
+}
+
+/* 🔥 Premium RGB Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(90deg, red, #ff00f0, cyan);
+    background-size: 300%;
+    animation: btnRGB 3s linear infinite;
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+@keyframes btnRGB {
+    0% { background-position: 0%; }
+    50% { background-position: 120%; }
+    100% { background-position: 0%; }
+}
+
+.switch {
+    margin-top: 10px;
+    color: #ddd;
+    text-align: center;
+}
+
+.switch span {
+    color: yellow;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container" id="authContainer">
-        <h2 id="formTitle">Login</h2>
+<div class="rgb-box" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="switch">Create new account? <span onclick="showRegister()">Register</span></div>
+</div>
 
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
+<div class="rgb-box" id="registerBox" style="display:none;">
+    <h2>Register</h2>
+    <input type="text" id="regUser" placeholder="Username">
+    <input type="password" id="regPass" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <div class="switch">Already have account? <span onclick="showLogin()">Login</span></div>
+</div>
 
-        <button id="authButton">Login</button>
+<script>
 
-        <div class="forgot" id="forgotPass">Forgot Password?</div>
-        <div class="switch" id="switchForm">Don't have an account? Register</div>
-    </div>
+function showRegister() {
+    loginBox.style.display = "none";
+    registerBox.style.display = "block";
+}
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail }
-            from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+function showLogin() {
+    registerBox.style.display = "none";
+    loginBox.style.display = "block";
+}
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDtcLNRloX0yo_n5gv-QUhhVD6z6DQHGl4",
-            authDomain: "login-7966b.firebaseapp.com",
-            projectId: "login-7966b",
-            storageBucket: "login-7966b.firebasestorage.app",
-            messagingSenderId: "953134998880",
-            appId: "1:953134998880:web:839f4131f8d53bbd242a05",
-            measurementId: "G-M89HNYWNH2"
-        };
+function register() {
+    let user = regUser.value;
+    let pass = regPass.value;
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+    if(user=="" || pass=="") {
+        alert("Please fill all fields");
+        return;
+    }
 
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-        const authButton = document.getElementById('authButton');
-        const formTitle = document.getElementById('formTitle');
-        const switchForm = document.getElementById('switchForm');
-        const forgotPass = document.getElementById('forgotPass');
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
 
-        let mode = "login";  // login / register / forgot
+    alert("Registration successful!");
+    showLogin();
+}
 
-        // Toggle Login/Register
-        switchForm.addEventListener('click', () => {
-            if (mode === "forgot") {
-                mode = "login";
-                password.style.display = "block";
-                authButton.textContent = "Login";
-                formTitle.textContent = "Login";
-                forgotPass.style.display = "block";
-                switchForm.textContent = "Don't have an account? Register";
-            }
-            else {
-                mode = mode === "login" ? "register" : "login";
-                formTitle.textContent = mode === "login" ? "Login" : "Register";
-                authButton.textContent = mode === "login" ? "Login" : "Register";
-                switchForm.textContent = mode === "login" ? "Don't have an account? Register" : "Already have an account? Login";
-            }
-        });
+function login() {
+    let user = loginUser.value;
+    let pass = loginPass.value;
 
-        // Forgot password clicked
-        forgotPass.addEventListener('click', () => {
-            mode = "forgot";
-            formTitle.textContent = "Reset Password";
-            authButton.textContent = "Send Reset Link";
+    if(user === localStorage.getItem("user") &&
+       pass === localStorage.getItem("pass")) {
 
-            password.style.display = "none";
-            forgotPass.style.display = "none";
+        sessionStorage.setItem("loggedIn", "true");
+        alert("Login Successful!");
 
-            switchForm.textContent = "Back to Login";
-        });
+        window.location.href = "dashboard.html";
 
-        // Auth Button
-        authButton.addEventListener('click', () => {
+    } else {
+        alert("Invalid Username or Password");
+    }
+}
 
-            if (!email.value) {
-                alert("Please enter your email!");
-                return;
-            }
-
-            if (mode === "login") {
-                if (!password.value) { alert("Please enter password!"); return; }
-                signInWithEmailAndPassword(auth, email.value, password.value)
-                    .then(() => {
-                        sessionStorage.setItem('loggedIn', 'true');
-                        window.location.href = 'dashboard.html';
-                    })
-                    .catch(err => alert(err.message));
-            }
-
-            else if (mode === "register") {
-                if (!password.value) { alert("Please enter password!"); return; }
-                createUserWithEmailAndPassword(auth, email.value, password.value)
-                    .then(() => alert("Registration Successful! Now login."))
-                    .catch(err => alert(err.message));
-            }
-
-            else if (mode === "forgot") {
-                sendPasswordResetEmail(auth, email.value)
-                    .then(() => alert("Reset link sent to your email!"))
-                    .catch(err => alert(err.message));
-            }
-        });
-    </script>
-
+</script>
+<div class="design-by">Design by Nitish</div>
 </body>
-
 </html>
